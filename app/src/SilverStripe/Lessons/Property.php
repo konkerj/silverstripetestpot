@@ -110,4 +110,15 @@ class Property extends DataObject
         
         return $fields;
     }
+    
+    public function validate() {
+        $result = parent::validate();
+        
+        //testing do not allow real property name
+        if($this->Title == 'Real Property'){
+            $result->addError('No real property title allowed');
+        }
+        
+        return $result;
+    }
 }
