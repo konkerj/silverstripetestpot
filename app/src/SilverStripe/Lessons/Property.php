@@ -116,7 +116,7 @@ class Property extends DataObject
         
         //testing do not allow real property name
         if($this->Title == 'Real Property'){
-            $result->addError('No real property title allowed');
+            $result->addError('No "Real Property" title allowed');
         }
         
         return $result;
