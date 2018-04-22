@@ -1,0 +1,36 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+namespace SilverStripe\Lessons;
+
+use Page;
+
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+
+class RegionsPage extends Page
+{
+    private static $has_many = [
+        'Regions' => Region::class,
+    ];
+    
+    private static $owns = [
+        'Regions'
+    ];
+    
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
+        
+        $fields->addFieldToTab('Root.Regions', GridField::create(
+                'Regions',
+                'Regions on this page',
+                $this->Regions(),
+                GridFieldConfig_RecordEditor::create()));
+        
+        return $fields;
+    }
+}
